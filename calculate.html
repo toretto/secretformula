@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="container-fluid">
+<h2>Bereken Solden</h2>
+<p>Geef bij "Prijs" de huidige prijs in. Geef vervolgens bij "Korting" het percentage korting op.</p>
+<form method="get" action="/scgi-bin/calculate2.cgi">
+<label>Prijs:</label>
+<p><input type="text" name="prijs" class="form-control"></p>
+<label>Korting:</label>
+<p><input type="text" name="korting" class="form-control"></p>
+<input type="submit" value="Bereken" class="btn btn-default">
+</form>
+</div>
+</body>
+</html>
