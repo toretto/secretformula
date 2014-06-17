@@ -34,16 +34,17 @@ form = cgi.FieldStorage()
 #instantiate only once!
 
 #Get values from the fields named "prijs" en "korting"
-prijs = int(form.getfirst('prijs','empty'))
-korting = int(form.getfirst('korting','empty'))
+prijs = float(form.getfirst('prijs','empty'))
+vat = float(form.getfirst('vat','empty'))
 #prijs = cgi.escape(prijs)
 #korting = cgi.escape(korting)
-totaal = prijs * ( 1.0 - (korting / 100.0))
+totaal = prijs * ( 1.0 + (vat / 100.0))
 #Write double % ("%%") to write % without error. Adding %s allows to define variables outside of text
-print ("Met %s%% korting op €%s is de nieuwe prijs €%s" % (korting,prijs,totaal))
+print ("Met %s%% BTW op €%s is de nieuwe prijs €%s" % (vat,prijs,totaal))
 #End of Python, back to writing HTML
 print """\
 
 </p>
+<p><a href="http://toralkohost.com/calculate.html" class="btn btn-default">Back</a></span></p>
 </div>
 """

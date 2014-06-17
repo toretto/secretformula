@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="container-fluid">
+<h2>Bereken Prijs met BTW</h2>
+<p>Geef bij "Prijs" de huidige prijs in. Geef vervolgens bij "BTW" het BTW-percentage op.</p>
+<form method="get" action="/scgi-bin/salestax.cgi">
+<label>Prijs:</label>
+<p><input type="text" name="prijs" class="form-control"></p>
+<label>BTW Percentage:</label>
+<p><input type="text" name="vat" class="form-control"></p>
+<input type="submit" value="Bereken" class="btn btn-default">
+</form>
+<div class="clr"></div>
+<br/>
+<p><a href="calculate.html" class="btn btn-default">Terug</a></p>
+</div>
+</body>
+</html>
