@@ -1,0 +1,18 @@
+{
+  "logger": {
+    "title": "Remote Sync"
+  },
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "toralkhost.com",
+  "target": "/apps/secretformula/",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "toralkoh",
+  "password": "Interisti01",
+  "watch": [],
+  "transport": "scp"
+}

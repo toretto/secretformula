@@ -1,0 +1,83 @@
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/custom.css">
+    <link href="apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+    <link href="apple-touch-icon-167x167.png" rel="apple-touch-icon" sizes="167x167" />
+    <link href="apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Reads the values from the form and uses them for the Javascript below. As of now, the Javascript will show value on 2nd page. Note that Javascript doesn't use the $ for variables (apparently)-->
+    <script type="text/javascript">
+        function Discount() {
+            // Sample Formula To Be Changed
+            var aantalkopen = document.getElementById('aantalkopen').value;
+            var aantalgratis = document.getElementById('aantalgratis').value;
+            var prijs = document.getElementById('stukprijs').value;
+
+            // Regex Search and Replace, replacing comma's with dots for correct calculation
+            aantalkopen = aantalkopen.replace(/,/g, '.');
+            aantalgratis = aantalgratis.replace(/,/g, '.');
+            prijs = prijs.replace(/,/g, '.');
+
+            var aantaltotaal = parseFloat(aantalkopen) + parseFloat(aantalgratis);
+
+
+            //Berekenen Totale Besparing
+            var totaalbespaard = aantalgratis * prijs;
+            //Berekeken Besparing Per Product
+            var perproduct = totaalbespaard / aantaltotaal;
+            var totaalbespaard = totaalbespaard.toFixed(2);
+            var perproduct = perproduct.toFixed(2);
+            //Bereken wat je bespaard als je niet in de "val trap"
+            var valbespaard = ((aantaltotaal - 1) * prijs);
+            //"Aanpassen" van HTML in velden met overeenkomstige ID
+            document.getElementById('message').innerHTML = totaalbespaard;
+            document.getElementById('message2').innerHTML = perproduct;
+            document.getElementById('message3').innerHTML = valbespaard;
+            document.getElementById('aantal').innerHTML = aantaltotaal;
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container-fluid desktop">
+
+        <h2>X Kopen, Y gratis (Stukprijs)</h2>
+        <p>Deze formule berekent hoeveel je bespaart met een "x kopen, y gratis" aanbieding. Of hoeveel je bespaart door er niet op in te gaan...</p>
+        <p>Deze formule gebruik je wanneer alleen de stukprijs bekend is. Gebruik bij een promotieprijs de andere formule.</p>
+        <!-- <p class="alert alert-primary">Gebruik voor cijfers achter de komma een punt (.) in plaats van een komma (,)</p> --
+        <form onSubmit="return Discount();">
+
+            <label>Aantal Kopen:</label>
+            <p><input type="text" name="aantalkopen" class="form-control" id="aantalkopen"></p>
+            <label>Aantal Gratis:</label>
+            <p><input type="text" name="aantalgratis" class="form-control" id="aantalgratis"></p>
+            <label>Prijs Per Stuk:</label>
+            <p><input type="text" name="stukprijs" class="form-control" id="stukprijs"></p>
+            <input type="button" onclick="Discount()" value="Bereken" class="btn btn-success">
+        </form>
+
+        <div class="clr"></div>
+        <br/>
+        <p><a href="index.html" class="btn btn-primary">Terug</a></p>
+    </div>
+    <div class="jumbotron">
+        <h2>Resultaat</h2>
+        <!--De velden met ID worden "schrijfbaar voor het Javascript via opzoeken Element en innerHTML-->
+        <p>Deze aanbieding laat je €<span id="message"></span> besparen op de aankoop van <span id="aantal"></span> producten
+            <p>
+                <p>Je bespaard per product €<span id="message2" </span></p>
+                <p>Als je de aanbieding <em>niet koopt</em>en maar één product meeneemt, dan spaar je echter ook €<span id="message3" </span> uit.</p>
+
+            </p>
+
+    </div>
+</body>
+
+</html>

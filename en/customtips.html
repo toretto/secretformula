@@ -14,22 +14,22 @@
     <!--Reads the values from the form and uses them for the Javascript below. As of now, the Javascript will show value on 2nd page. Note that Javascript doesn't use the $ for variables (apparently)-->
     <script type="text/javascript">
         function Salestax() {
-            // Inlezen waarden variabelen vanuit form
+            // Inlzen waarden variabelen vanuit form
             var prijs = document.getElementById('prijs').value;
-            var vat = document.getElementById('vat').value;
-
+            var tip = document.getElementById('tip').value;
             // Regex Search and Replace, replacing comma's with dots for correct calculation
             prijs = prijs.replace(/,/g, '.');
-            vat = vat.replace(/,/g, '.');
+            tip = tip.replace(/,/g, '.');
+
             //Berekenen totaal prijs + BTW
-            var result = prijs * (1 + (vat / 100));
+            var result = prijs * (1 + (tip / 100));
             var result = result.toFixed(2);
             //Berekenen van BTW bedrag
-            var vatbedrag = prijs * (vat / 100);
-            var vatbedrag = vatbedrag.toFixed(2);
+            var tipbedrag = prijs * (tip / 100);
+            var tipbedrag = tipbedrag.toFixed(2);
             //"Aanpassen" van HTML in velden met overeenkomstige ID
             document.getElementById('message').innerHTML = result;
-            document.getElementById('vattotal').innerHTML = vatbedrag;
+            document.getElementById('tiptotal').innerHTML = tipbedrag;
         }
     </script>
 </head>
@@ -37,29 +37,30 @@
 <body>
     <div class="container-fluid desktop">
 
-        <h2>Bereken Prijs met BTW</h2>
-        <p>Geef bij "Prijs" de huidige prijs in. Geef vervolgens bij "BTW" het BTW-percentage op.</p>
-        <!--  <p class="alert alert-primary">Gebruik voor cijfers achter de komma een punt (.) in plaats van een komma (,)</p> -->
+        <h2>Tips (Fixed Percentages)</h2>
+        <p>Enter the basic amount at Price. Then choose the desired tip percentage at "Tip".</p>
+        <!-- <p class="alert alert-primary">Please use a dot (.) instead of a comma(,) for decimal numbers.</p> -->
 
         <form onSubmit="return Salestax();">
 
-            <label>Prijs:</label>
+            <label>Price:</label>
             <p><input type="text" name="prijs" class="form-control" id="prijs"></p>
-            <label>BTW Percentage:</label>
-            <p><input type="text" name="vat" class="form-control" id="vat"></p>
-            <input type="button" onclick="Salestax()" value="Bereken" class="btn btn-success">
+            <label>Tip:</label>
+            <p><input type="text" name="vat" class="form-control" id="tip"></p>
+
+            <input type="button" onclick="Salestax()" value="Calculate" class="btn btn-success">
         </form>
 
         <div class="clr"></div>
         <br/>
-        <p><a href="index.html" class="btn btn-secondary">Terug</a></p>
+        <p><a href="index.html" class="btn btn-primary">Back</a></p>
     </div>
     <div class="jumbotron">
-        <h2>Resultaat</h2>
+        <h2>Result</h2>
         <!--De velden met ID worden "schrijfbaar voor het Javascript via opzoeken Element en innerHTML-->
-        <p>De prijs inclusief BTW is €<span id="message"></span>
+        <p>The tip is <span id="tiptotal" </span></p>
+        <p>The price including tip is <span id="message"></span>
             <p>
-                <p>De BTW bedraagt €<span id="vattotal" </span></p>
             </p>
 
     </div>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/custom.css">
+    <link href="apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+    <link href="apple-touch-icon-167x167.png" rel="apple-touch-icon" sizes="167x167" />
+    <link href="apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Reads the values from the form and uses them for the Javascript below. As of now, the Javascript will show value on 2nd page. Note that Javascript doesn't use the $ for variables (apparently)-->
+    <script type="text/javascript">
+        function PricePerUnit() {
+            // Inlzen waarden variabelen vanuit form
+            var prijsproduct1 = document.getElementById('prijsproduct1').value;
+            var aantalproduct1 = document.getElementById('aantalproduct1').value;
+            var prijsproduct2 = document.getElementById('prijsproduct2').value;
+            var aantalproduct2 = document.getElementById('aantalproduct2').value;
+
+            // Regex Search and Replace, replacing comma's with dots for correct calculation
+            prijsproduct1 = prijsproduct1.replace(/,/g, '.');
+            aantalproduct1 = aantalproduct1.replace(/,/g, '.');
+            prijsproduct2 = prijsproduct2.replace(/,/g, '.');
+            aantalproduct2 = aantalproduct2.replace(/,/g, '.');
+
+            //Comparing Prices
+            var eenheidsprijs1 = prijsproduct1 / aantalproduct1;
+            var eenheidsprijs2 = prijsproduct2 / aantalproduct2;
+            var eenheidsprijs1 = eenheidsprijs1.toFixed(2);
+            var eenheidsprijs2 = eenheidsprijs2.toFixed(2);
+
+            if (eenheidsprijs1 < eenheidsprijs2) {
+                document.getElementById('result').innerHTML = "<strong><em>Product 1</strong></em> is goedkoper dan Product 2";
+            } else {
+                document.getElementById('result').innerHTML = "<strong><em>Product 2</strong></em> is goedkoper dan Product 1";
+            }
+            //"Aanpassen" van HTML in velden met overeenkomstige ID
+            //Gebruik + om meerdere waarden te "schrijven"
+            document.getElementById('prijspereenheid').innerHTML = "De eenheidsprijs van Product 1 is €" + eenheidsprijs1 + ", de eenheidsprijs van Product 2 is €" + eenheidsprijs2;
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div class="container-fluid desktop">
+        <h2>Bereken Prijs per stuk</h2>
+        <ul>
+            <li>Geef bij "Prijs Product 1" de prijs in van de eerste bundel.</li>
+            <li>Geef bij "Aaantal Product 1" het aantal artikelen in de eerste bundel op.</li>
+            <li> Geef bij "Prijs Product 2" de prijs in van de tweede bundel.</li>
+            <li>Geef bij "Aantal Product 2" het aantal producten in de tweede bundel op.</li>
+        </ul>
+        <form method="get" action="/scgi-bin/priceperunit.cgi">
+            <label>Prijs Product 1:</label>
+            <p><input type="text" name="prijsproduct1" class="form-control" id="prijsproduct1"></p>
+            <label>Aantal Product 1:</label>
+            <p><input type="text" name="aantalproduct1" class="form-control" id="aantalproduct1"></p>
+            <label>Prijs Product 2:</label>
+            <p><input type="text" name="prijsproduct2" class="form-control" id="prijsproduct2"></p>
+            <label>Aantal Product 1:</label>
+            <p><input type="text" name="aantalproduct2" class="form-control" id="aantalproduct2"></p>
+            <input type="button" onclick="PricePerUnit()" value="Bereken" class="btn btn-success">
+        </form>
+        <br/>
+        <p><a href="index.html" class="btn btn-primary">Terug</a></p>
+    </div>
+
+    <div class="jumbotron">
+        <h2>Resultaat</h2>
+        <!--De velden met ID worden "schrijfbaar voor het Javascript via opzoeken Element en innerHTML-->
+        <p><span id="result"></span></p>
+        <p><span id="prijspereenheid"></span></p>
+        </p>
+
+    </div>
+
+</body>
+
+</html>

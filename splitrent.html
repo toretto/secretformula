@@ -1,0 +1,200 @@
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/custom.css">
+    <link href="apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+    <link href="apple-touch-icon-167x167.png" rel="apple-touch-icon" sizes="167x167" />
+    <link href="apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Reads the values from the form and uses them for the Javascript below. As of now, the Javascript will show value on 2nd page. Note that Javascript doesn't use the $ for variables (apparently)-->
+
+</head>
+
+<body>
+    <div class="container-fluid desktop">
+
+        <h2>Huurprijs verdelen naar gebruik </h2>
+        <p>Geef bij "Prijs" de totale prijs op. Geef vervolgens bij "Deelnemers" aan hoeveel personen er mee zullen betalen. Daarna kan je gebruikers opgeven die maar voor enlen bepaald deel van de tijd meegehuurd hebben. </p>
+        <!--  <p class="alert alert-primary">Gebruik voor cijfers achter de komma een punt (.) in plaats van een komma (,)</p> -->
+
+        <form onSubmit="return Salestax();">
+
+            <h3>Gedeeltelijk deelgenomen</h3>
+            <div class="alert alert-primary">Geef enkel deelnemers op die slechts voor een gedeelte aan de activiteit hebben deelgenomen. De prijs voor deelnemers die aan de volledige activiteit hebben deelgenomen word automatisch berekend. Laat velden die je niet nodig hebt leeg.
+            </div>
+            <div class="alert-success alert">Begin met de (groep) mensen die het minst lang hebben deelgenomen aan de activiteit om tot een juist resultaat te komen.</div>
+
+            <h3>Algemene Informatie</h3>
+            <label>Totale prijs</label>
+            <p><input type="number" value="0" name="prijs" class="form-control" id="prijs"></p>
+            <label>Totaal aantal deelnemers</label>
+            <p><input type="number" value="0" name="deelnemers" class="form-control" id="deelnemers"></p>
+
+            <h3>Groep 1</h3>
+            <label>Aantal deelnemers Groep 1:</label>
+            <p><input type="number" value="0" name="aantalpart1" class="form-control" id="aantalpart1"></p>
+
+            <!--<p><input type="number" value="0" name="vat" class="form-control" id="tip"></p>-->
+            <div class="form-group">
+                <label for="sel1">Hoe lang deelgenomen (in %)?</label>
+                <select class="form-control" id="part1">
+    <option value="0.25">25%</option>
+    <option value="0.33">33%</option>
+    <option value="0.50">50%</option>
+    <option value="0.75">75%</option>
+  </select>
+            </div>
+
+            <h3>Groep 2</h3>
+            <label>Aantal deelnemers Groep 2:</label>
+            <p><input type="number" value="0" name="prijs" class="form-control" id="aantalpart2"></p>
+
+
+            <div class="form-group">
+                <label for="sel2">Hoe lang deelgenomen (in %)?</label>
+                <select class="form-control" id="part2">
+	  <option value="0.25">25%</option>
+	  <option value="0.33">33%</option>
+	  <option value="0.50">50%</option>
+	  <option value="0.75">75%</option>
+	</select>
+            </div>
+
+            <h3>Groep 3</h3>
+            <label>Aantal deelnemers Groep 3</label>
+            <p><input type="number" value="0" name="prijs" class="form-control" id="aantalpart3"></p>
+
+            <div class="form-group">
+                <label for="sel3">Hoe lang deelgenomen (in %)?</label>
+                <select class="form-control" id="part3">
+	  <option value="0.25">25%</option>
+	  <option value="0.33">33%</option>
+	  <option value="0.50">50%</option>
+	  <option value="0.75">75%</option>
+	</select>
+            </div>
+
+            <h3>Groep 4</h3>
+            <label>Aantal deelnemers Groep 4</label>
+            <p><input type="number" value="0" name="prijs" class="form-control" id="aantalpart4"></p>
+
+
+            <div class="form-group">
+                <label for="sel4">Hoe lang deelgenomen (in %)?</label>
+                <select class="form-control" id="part4">
+	  <option value="0.25">25%</option>
+	  <option value="0.33">33%</option>
+	  <option value="0.50">50%</option>
+	  <option value="0.75">75%</option>
+	</select>
+            </div>
+
+            <input type="button" onclick="Salestax()" value="Bereken" class="btn btn-success">
+        </form>
+
+        <div class="clr"></div>
+        <br/>
+        <p><a href="index.html" class="btn btn-primary">Terug</a></p>
+    </div>
+    <div class="jumbotron">
+        <h2>Resultaat</h2>
+        <!--De velden met ID worden "schrijfbaar voor het Javascript via opzoeken Element en innerHTML-->
+        <p>Deelnemers uit groep 1 betalen per persoon <span id="prijsgroep1"></span></p>
+        <p>Deelnemers uit groep 2 betalen per persoon <span id="prijsgroep2"></span></p>
+        <p>Deelnemers uit groep 3 betalen per persoon <span id="prijsgroep3"></span></p>
+        <p>Deelnemers uit groep 4 betalen per persoon <span id="prijsgroep4"></span></p>
+        <p>Deelnemers die de hele tijd deelnamen betalen per persoon <span id="prijsfull"></span></p>
+
+
+
+    </div>
+    <script type="text/javascript">
+        function Salestax() {
+            // Inlezen waarden gedeelntelijke groepen
+            var aantalpart1 = document.getElementById('aantalpart1').value;
+            var part1 = document.getElementById('part1').value;
+            var aantalpart2 = document.getElementById('aantalpart2').value;
+            var part2 = document.getElementById('part2').value;
+            var aantalpart3 = document.getElementById('aantalpart3').value;
+            var part3 = document.getElementById('part3').value;
+            var aantalpart4 = document.getElementById('aantalpart4').value;
+            var part4 = document.getElementById('part4').value;
+
+            var prijs = document.getElementById('prijs').value;
+            var deelnemers = document.getElementById('deelnemers').value
+
+            //part2 = part2 || 0
+            //part3 = part3 || 0
+            // part4 = part4 || 0
+            //Berekenen Prijs Groep 1
+
+            if (aantalpart1 < 1) {
+                prijsgroep1 = 0
+                rest = prijs
+                restdeelnemers = deelnemers
+            } else {
+                prijsgroep1 = (prijs / deelnemers) * part1
+                rest = prijs - (prijsgroep1 * aantalpart1)
+                restdeelnemers = deelnemers - aantalpart1
+                    //document.getElementById('part1').innerHTML = part1;
+                    //document.getElementById('prijsgroep1').innerHTML = prijsgroep1;
+            }
+            if (aantalpart2 < 1) {
+                prijsgroep2 = 0
+                    //	prijsgroep2 = 100
+                    //	document.getElementById('part2').innerHTML = part2;
+                    //	document.getElementById('prijsgroep2').innerHTML = prijsgroep2;
+            } else {
+                prijsgroep2 = ((rest) / (restdeelnemers)) * part2
+                rest = rest - (prijsgroep2 * aantalpart2)
+                restdeelnemers = restdeelnemers - aantalpart2
+            }
+            if (aantalpart3 < 1) {
+                prijsgroep3 = 0
+                    //	prijsgroep3 = 1+2+3
+                    //	prijsgroep3 = 200
+                    //	document.getElementById('part3').innerHTML = part3;
+                    //	document.getElementById('prijsgroep3').innerHTML = prijsgroep3;
+            } else {
+                prijsgroep3 = ((rest) / (restdeelnemers)) * part3
+                rest = rest - (prijsgroep3 * aantalpart3)
+                restdeelnemers = restdeelnemers - aantalpart3
+            }
+            if (aantalpart4 < 1) {
+                prijsgroep4 = 0
+                    //	prijsgroep4 = 300
+                    //	document.getElementById('part4').innerHTML = part4;
+                    //	document.getElementById('prijsgroep4').innerHTML = prijsgroep4;
+            } else {
+                prijsgroep4 = ((rest) / (restdeelnemers)) * part4
+                rest = rest - (prijsgroep4 * aantalpart4)
+                restdeelnemers = restdeelnemers - aantalpart4
+            }
+
+            prijsfull = rest / restdeelnemers
+                // prijsfull = 500 
+
+
+            //"Aanpassen" van HTML in velden met overeenkomstige ID
+            document.getElementById('part1').innerHTML = part1;
+            document.getElementById('prijsgroep1').innerHTML = prijsgroep1;
+            document.getElementById('part2').innerHTML = part2;
+            document.getElementById('prijsgroep2').innerHTML = prijsgroep2;
+            document.getElementById('part3').innerHTML = part3;
+            document.getElementById('prijsgroep3').innerHTML = prijsgroep3;
+            document.getElementById('part4').innerHTML = part4;
+            document.getElementById('prijsgroep4').innerHTML = prijsgroep4;
+            document.getElementById('prijsfull').innerHTML = prijsfull;
+
+
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/custom.css">
+	<link href="apple-touch-icon.png" rel="apple-touch-icon" />
+	<link href="apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+	<link href="apple-touch-icon-167x167.png" rel="apple-touch-icon" sizes="167x167" />
+	<link href="apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!--Reads the values from the form and uses them for the Javascript below. As of now, the Javascript will show value on 2nd page. Note that Javascript doesn't use the $ for variables (apparently)-->
+<script type="text/javascript">
+		function Discount()
+	{
+	// Sample Formula To Be Changed
+	var waarde1 = document.getElementById('waarde1').value;
+	var waarde2 = document.getElementById('waarde2').value;
+	//Berekenen van waarde2
+	var waarde2bedrag = waarde1 * (waarde2/100);
+	var waarde2bedrag = waarde2bedrag.toFixed(2);
+	//Berekeken bedrag met waarde2
+	var result = waarde1 - waarde2bedrag;
+	var result = result.toFixed(2);
+	//"Aanpassen" van HTML in velden met overeenkomstige ID
+	document.getElementById('message').innerHTML = result;
+	document.getElementById('waarde2total').innerHTML = waarde2bedrag; 
+	}
+
+</script>
+</head>
+<body>
+<div class="container-fluid desktop">
+
+<h2>titel</h2>
+<p>Beschrijving</p>
+<p class="alert alert-primary">Opmerking</p>
+
+<form onSubmit="return Discount();">
+
+<label>waarde1:</label>
+<p><input type="text" name="waarde1" class="form-control" id="waarde1"></p>
+<label>waarde2:</label>
+<p><input type="text" name="waarde2" class="form-control" id="waarde2"></p>
+<input type="button" onclick="Discount()" value="Bereken" class="btn btn-success">
+</form>
+
+<div class="clr"></div>
+<br/>
+<p><a href="index.html" class="btn btn-primary">Terug</a></p>
+</div>
+<div class="jumbotron">
+	<h2>Resultaat</h2>
+	<!--De velden met ID worden "schrijfbaar voor het Javascript via opzoeken Element en innerHTML-->
+	<p>Resultaat1 <span id="message"></span><p>
+	<p>Resultaat2 <span id="waarde2total"</span></p>
+	</p>
+	
+</div>
+</body>
+</html>

@@ -14,13 +14,14 @@
     <!--Reads the values from the form and uses them for the Javascript below. As of now, the Javascript will show value on 2nd page. Note that Javascript doesn't use the $ for variables (apparently)-->
     <script type="text/javascript">
         function Salestax() {
-            // Inlezen waarden variabelen vanuit form
+            // Inlzen waarden variabelen vanuit form
             var prijs = document.getElementById('prijs').value;
             var vat = document.getElementById('vat').value;
 
             // Regex Search and Replace, replacing comma's with dots for correct calculation
             prijs = prijs.replace(/,/g, '.');
             vat = vat.replace(/,/g, '.');
+
             //Berekenen totaal prijs + BTW
             var result = prijs * (1 + (vat / 100));
             var result = result.toFixed(2);
@@ -37,29 +38,29 @@
 <body>
     <div class="container-fluid desktop">
 
-        <h2>Bereken Prijs met BTW</h2>
-        <p>Geef bij "Prijs" de huidige prijs in. Geef vervolgens bij "BTW" het BTW-percentage op.</p>
-        <!--  <p class="alert alert-primary">Gebruik voor cijfers achter de komma een punt (.) in plaats van een komma (,)</p> -->
+        <h2>Price Including VAT (or taxes)</h2>
+        <p>Enter the current price at "Price". Then, add the VAT or tax percentage in the "VAT/TAX" field..</p>
+        <!-- <p class="alert alert-primary">Please use a dot (.) instead of a comma(,) for decimal numbers.</p> -->
 
         <form onSubmit="return Salestax();">
 
-            <label>Prijs:</label>
+            <label>Price:</label>
             <p><input type="text" name="prijs" class="form-control" id="prijs"></p>
-            <label>BTW Percentage:</label>
+            <label>VAT/TAX Percentage:</label>
             <p><input type="text" name="vat" class="form-control" id="vat"></p>
-            <input type="button" onclick="Salestax()" value="Bereken" class="btn btn-success">
+            <input type="button" onclick="Salestax()" value="Calculate" class="btn btn-success">
         </form>
 
         <div class="clr"></div>
         <br/>
-        <p><a href="index.html" class="btn btn-secondary">Terug</a></p>
+        <p><a href="index.html" class="btn btn-secondary">Back</a></p>
     </div>
     <div class="jumbotron">
-        <h2>Resultaat</h2>
+        <h2>Result</h2>
         <!--De velden met ID worden "schrijfbaar voor het Javascript via opzoeken Element en innerHTML-->
-        <p>De prijs inclusief BTW is €<span id="message"></span>
+        <p>The price including taxes is <span id="message"></span>
             <p>
-                <p>De BTW bedraagt €<span id="vattotal" </span></p>
+                <p>The VAT/TAX amount is <span id="vattotal" </span></p>
             </p>
 
     </div>

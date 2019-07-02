@@ -1,0 +1,69 @@
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+    <link href="/apple-touch-icon-167x167.png" rel="apple-touch-icon" sizes="167x167" />
+    <link href="/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Reads the values from the form and uses them for the Javascript below. Note that Javascript doesn't use the $ for variables (apparently)-->
+    <script type="text/javascript">
+        function FormulaResult() {
+            // Sample Formula To Be Changed
+            var waarde1 = document.getElementById('waarde1').value; // Brandstofprijs
+            var waarde2 = document.getElementById('waarde2').value; // Verbruik per 100km
+            var waarde3 = document.getElementById('waarde3').value; // Afgelegde Afstand
+            var waarde4 = 100;
+
+            // Regex to replace comma with dot in input
+            waarde1 = waarde1.replace(/,/g, '.');
+            waarde2 = waarde2.replace(/,/g, '.');
+            waarde3 = waarde3.replace(/,/g, '.');
+
+            //Berekenen van Kostprijs
+            var waarderesultaat = waarde1 * (waarde2 * (waarde3 / 100))
+            var waarderesultaat = waarderesultaat.toFixed(2);
+            //"Aanpassen" van HTML in velden met overeenkomstige ID
+            document.getElementById('message').innerHTML = waarderesultaat;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container-fluid desktop">
+
+        <h2>Brandstofkosten Reis</h2>
+        <p>Met deze formule bereken je de brandstofkosten voor je geplande reis. Deze formule gaat er vanuit dat je het verbruik per 100km van je wagen kent.</p>
+        <p class="alert alert-primary">Opmerking: Het rëele verbruik van je wagen kan verschillen van je opgegeven verbruik.</p>
+
+        <form onSubmit="return FormulaResult();">
+
+            <label>Brandstofprijs</label>
+            <p><input type="text" name="waarde1" class="form-control" id="waarde1"></p>
+            <label>Verbruik wagen (liters per 100km)</label>
+            <p><input type="text" name="waarde2" class="form-control" id="waarde2"></p>
+            <label>Afstand Reis</label>
+            <p><input type="text" name="waarde3" class="form-control" id="waarde3"></p>
+            <input type="button" onclick="FormulaResult()" value="Bereken" class="btn btn-success">
+        </form>
+
+        <div class="clr"></div>
+        <br/>
+        <p><a href="index.html" class="btn btn-primary">Terug</a></p>
+    </div>
+    <div class="jumbotron">
+        <h2>Resultaat</h2>
+        <!--De velden met ID worden "schrijfbaar" / vervangen door Javascript waarden het Javascript via opzoeken Element en innerHTML-->
+        <p>De brandstofkosten voor deze trip zullen €<span id="message"></span> bedragen.
+            <p>
+            </p>
+
+    </div>
+</body>
+
+</html>
