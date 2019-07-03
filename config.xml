@@ -1,0 +1,11 @@
+<xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlsn:gap = http://phonegap.com/ns/1.0"
+    id = "com.toralkohost.com.secretformula"
+    version = "0.0.1" >
+    
+    <name>Secret Formula</name>
+    <description>Helps you calculate the difficult things in life</description>
+    <author href="https://stevenzeegers.me" email="steven.zeegers@gmail.com">Steven Zeegers</author>
+
+</widget>
