@@ -1,6 +1,6 @@
 <xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
-    xmlsn:gap = http://phonegap.com/ns/1.0"
+    xmlsn:gap = "http://phonegap.com/ns/1.0"
     id = "com.toralkohost.com.secretformula"
     version = "0.0.1" >
     
