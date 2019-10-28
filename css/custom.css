@@ -12,13 +12,35 @@
     }
     div.desktop {
         width: 800px;
-        margin:auto;
+        margin: auto;
     }
 }
-div.container-fluid desktop {
+
+div.desktop {
     margin-top: 15px;
 }
-div.menu a.btn { 
+
+div.menu a.btn {
     width: 100%;
     white-space: normal;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+.jumbotron {
+    background: grey;
+    font-size: 1.2em;
+    line-height: 1em
+}
+
+@media screen and (min-width:1080px) {
+    .jumbotron h2 {
+        font-size: 3em;
+    }
+    .jumbotron {
+        font-size: 1.5em;
+    }
 }

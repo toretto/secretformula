@@ -24,7 +24,7 @@
 
 
             //Berekenen totaal prijs + BTW
-            var result = prijs * (1 + (vat / 100));
+            var result = prijs / (1 + (vat / 100));
             var result = result.toFixed(2);
             //Berekenen van BTW bedrag
             var vatbedrag = prijs - result;
@@ -53,18 +53,20 @@
         </form>
 
         <div class="clr"></div>
+
+        <div class="jumbotron">
+            <h2>Resultaat</h2>
+            <!--De velden met ID worden "schrijfbaar voor het Javascript via opzoeken Element en innerHTML-->
+            <p>De prijs inclusief BTW is €<span id="message"></span>
+                <p>
+                    <p>De BTW bedraagt €<span id="vattotal" </span></p>
+                </p>
+
+        </div>
         <br/>
         <p><a href="index.html" class="btn btn-primary">Terug</a></p>
     </div>
-    <div class="jumbotron">
-        <h2>Resultaat</h2>
-        <!--De velden met ID worden "schrijfbaar voor het Javascript via opzoeken Element en innerHTML-->
-        <p>De prijs inclusief BTW is €<span id="message"></span>
-            <p>
-                <p>De BTW bedraagt €<span id="vattotal" </span></p>
-            </p>
 
-    </div>
 </body>
 
 </html>
