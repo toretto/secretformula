@@ -22,3 +22,10 @@ div.menu a.btn {
     width: 100%;
     white-space: normal;
 }
+
+.navbar {
+    margin: 1rem 0;
+    border: #007bff 1px solid;
+    font-weight: bold;
+    border-radius: 5px;
+}
