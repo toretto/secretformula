@@ -30,14 +30,17 @@
             //Comparing Prices
             var eenheidsprijs1 = prijsproduct1 / aantalproduct1;
             var eenheidsprijs2 = prijsproduct2 / aantalproduct2;
-            var eenheidsprijs1 = eenheidsprijs1.toFixed(2);
-            var eenheidsprijs2 = eenheidsprijs2.toFixed(2);
+            // var eenheidsprijs1 = eenheidsprijs1.toFixed(2);
+            // var eenheidsprijs2 = eenheidsprijs2.toFixed(2);
 
             if (eenheidsprijs1 < eenheidsprijs2) {
                 document.getElementById('result').innerHTML = "<strong><em>Product 1</strong></em> is goedkoper dan Product 2";
             } else {
                 document.getElementById('result').innerHTML = "<strong><em>Product 2</strong></em> is goedkoper dan Product 1";
             }
+
+            var eenheidsprijs1 = eenheidsprijs1.toFixed(2);
+            var eenheidsprijs2 = eenheidsprijs2.toFixed(2);
             //"Aanpassen" van HTML in velden met overeenkomstige ID
             //Gebruik + om meerdere waarden te "schrijven"
             document.getElementById('prijspereenheid').innerHTML = "De eenheidsprijs van Product 1 is €" + eenheidsprijs1 + ", de eenheidsprijs van Product 2 is €" + eenheidsprijs2;
