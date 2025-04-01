@@ -1,5 +1,6 @@
 <html lang="en">
 <head>
+	<title>Secret Formula</title>
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/custom.css">
 	<link href="/apple-touch-icon.png" rel="apple-touch-icon" />
@@ -30,39 +31,39 @@
 </head>
 <body>
 <div class="container-fluid desktop">        <nav class="navbar navbar-default">
-<div class="container-fluid desktop">        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="https://apps.chipspowered.com/secretformula">Secret Formula</a>
-                </div>
-            </div>
-        </nav>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="https://apps.chipspowered.com/secretformula">Secret Formula</a>
+		</div>
+	</div>
+</nav>
 
-<h2>Fuel Costs</h2>
-<p>This formula calculates the estimated fuel costs for trip. You'll need to provide your car's fuel consumption per 100km.</p>
-<p class="alert alert-primary">Caution: The real fuel consumption of your car might depend on many factors.</p>
 
-<form onSubmit="return FormulaResult();">
+	<h2>Fuel Costs</h2>
+	<p>This formula calculates the estimated fuel costs for trip. You'll need to provide your car's fuel consumption per 100km.</p>
+	<p class="alert alert-primary">Caution: The real fuel consumption of your car might depend on many factors.</p>
 
-<label>Fuel Price</label>
-<p><input type="text" name="waarde1" class="form-control" id="waarde1"></p>
-<label>Consumption (liters per 100km)</label>
-<p><input type="text" name="waarde2" class="form-control" id="waarde2"></p>
-<label>Distance</label>
-<p><input type="text" name="waarde3" class="form-control" id="waarde3"></p>
-<input type="button" onclick="FormulaResult()" value="Calculate" class="btn btn-success">
-</form>
+	<form onSubmit="return FormulaResult();">
 
-<div class="clr"></div>
-<br/>
-<p><a href="index.html" class="btn btn-primary">Back</a></p>
-</div>
-<div class="jumbotron">
-	<h2>Result</h2>
-	<!--De velden met ID worden "schrijfbaar" / vervangen door Javascript waarden het Javascript via opzoeken Element en innerHTML-->
-	<p>The fuel costs for this trip will be <span id="message"></span>.<p>
+		<label>Fuel Price</label>
+		<p><input type="text" name="waarde1" class="form-control" id="waarde1"></p>
+		<label>Consumption (liters per 100km)</label>
+		<p><input type="text" name="waarde2" class="form-control" id="waarde2"></p>
+		<label>Distance</label>
+		<p><input type="text" name="waarde3" class="form-control" id="waarde3"></p>
+		<input type="button" onclick="FormulaResult()" value="Calculate" class="btn btn-success">
+	</form>
+
+	<div class="clr"></div>
+	<br/>
+	<p><a href="index.html" class="btn btn-primary">Back</a></p>
+	<div class="jumbotron">
+		<h2>Result</h2>
+		<!--De velden met ID worden "schrijfbaar" / vervangen door Javascript waarden het Javascript via opzoeken Element en innerHTML-->
+		<p>The fuel costs for this trip will be <span id="message"></span>.<p>
 	</p>
-	
+
+	</div>
 </div>
 </body>
 </html>
